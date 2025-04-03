@@ -1,4 +1,4 @@
-interface PriceCard {
+export interface PriceCard {
   plan: string;
   storage: string;
   price: {
