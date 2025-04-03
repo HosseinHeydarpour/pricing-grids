@@ -1,13 +1,14 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgFor } from '@angular/common';
 import { Component, input, InputSignal } from '@angular/core';
+import { PriceCard } from '../price-card.model';
 
 @Component({
   selector: 'app-pricing-card',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, NgFor],
   templateUrl: './pricing-card.component.html',
   styleUrl: './pricing-card.component.scss',
 })
 export class PricingCardComponent {
-  isFeatured = input.required<boolean>();
+  plan = input.required<PriceCard>();
 }

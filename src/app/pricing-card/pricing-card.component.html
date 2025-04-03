@@ -1,12 +1,17 @@
 <div
   class="rounded-xl text-white p-3"
-  [ngClass]="{ 'bg-violet-700': isFeatured(), 'bg-slate-700': !isFeatured() }"
+  [ngClass]="{
+    'bg-violet-700': plan().featured,
+    'bg-slate-700': !plan().featured
+  }"
 >
   <!-- Upper Container -->
   <div class="p-8 rounded-t-xl bg-slate-800">
-    <div class="text-center uppercase">Premium</div>
-    <h2 class="mt-10 font-serif text-5xl text-center">2 TB</h2>
-    <h3 class="mt-2 text-center">$8.99/Month</h3>
+    <div class="text-center uppercase">{{ plan().plan }}</div>
+    <h2 class="mt-10 font-serif text-5xl text-center">{{ plan().storage }}</h2>
+    <h3 class="mt-2 text-center">
+      ${{ plan().price.amount }}/{{ plan().price.billing_cycle }}
+    </h3>
     <div class="flex justify-center">
       <a
         href="#"
@@ -24,7 +29,7 @@
     <!-- List Container -->
     <div class="flex flex-col space-y-2">
       <!-- List Item 1 -->
-      <div class="flex justify-center">
+      <div class="flex justify-center" *ngFor="let feat of plan().features">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="w-5 h-5"
@@ -38,43 +43,7 @@
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path d="M5 12l5 5l10 -10" />
         </svg>
-        <span class="text-sm ml-1">2 TB of storage</span>
-      </div>
-
-      <!-- List Item 2 -->
-      <div class="flex justify-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-5 h-5"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M5 12l5 5l10 -10" />
-        </svg>
-        <span class="text-sm ml-1">Option to add members</span>
-      </div>
-
-      <!-- List Item 3 -->
-      <div class="flex justify-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-5 h-5"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M5 12l5 5l10 -10" />
-        </svg>
-        <span class="text-sm ml-1">Extra member benefits</span>
+        <span class="text-sm ml-1">{{ feat }}</span>
       </div>
     </div>
   </div>
