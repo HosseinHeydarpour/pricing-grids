@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PriceCard } from './price-card.model';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +36,7 @@ export class PricingService {
         'Extra member benefits',
       ],
       purchase_link: '#',
-      featured: false,
+      featured: true,
     },
     {
       plan: 'Premium',
